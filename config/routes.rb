@@ -1,4 +1,13 @@
 Myapp::Application.routes.draw do
+    
+    root to: 'users#index'
+    get "users/index" => 'users#index'
+    get "users/" => 'users#index'
+    post "/TESTAPI/resetFixture" => 'users#reset'
+    post "/users/add" => 'users#add'
+    post "/users/login" => 'users#login'
+    post "TESTAPI/unitTests" => 'users#unitTests'
+    
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
 
