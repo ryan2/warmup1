@@ -1,0 +1,6 @@
+<center>
+<h1> Welcome <%= @name.user %>! </h1>
+<h2> You have logged in <%= @name.count %> times </h2>
+<%= form_tag("/users/index", method: "get") do %>
+   <%=submit_tag("Logout")%>
+<% end %>

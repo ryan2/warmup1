@@ -1,0 +1,32 @@
+<center>
+<h1> Login Counter </h1>
+
+<%= form_tag("/", method: "post") do %>
+    <% if !@result.nil? %>
+           <% if @result<0 %>
+               <% if @result==-1 %>
+                    <h2> Unknown Username and Password Combination </h2>
+                <% end %>
+                <% if @result==-2 %>
+                    <h2> Username already exists </h2>
+                <% end %>
+                <% if @result==-3 %>
+                    <h2> Invalid Username </h2>
+                <% end %>
+                <% if @result==-4 %>
+                    <h2> Invalid Password </h2>
+                <% end %>
+                <% if @result==-5 %>
+                    <h2> Database Reset </h2>
+                <% end %>
+            <% end %>
+    <% end %>
+  <%= label_tag(:user, "Username") %>
+  <%= text_field_tag(:user) %><br>
+  <%=label_tag(:password, "Password")%>
+  <%=password_field_tag(:password)%><br>
+  <%=submit_tag("Login", :onclick => "this.form.action = '/users/login'")%>
+  <%=submit_tag("New User", :onclick => "this.form.action = '/users/add'")%>
+  <%=submit_tag("Reset", :onclick => "this.form.action = '/TESTAPI/resetFixture'")%>
+<% end %>
+</center>
