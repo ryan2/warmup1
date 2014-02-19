@@ -6,10 +6,12 @@ class UsersController < ApplicationController
     
     def add
         @result = User.add(params[:user], params[:password])
+        # if add is success, go to the add page
         if @result > 0
         #     render :json => {:errCode => @result, :count => @result}
             @name = User.find_by_user(params[:user])
             render :add
+        # if add is not a success, go back to main page and show error
         else
         #    render :json => {:errCode => @result}
             render :index
@@ -18,10 +20,12 @@ class UsersController < ApplicationController
     
     def login
         @result = User.login(params[:user], params[:password])
+        #if login is success, go to login page
         if @result > 0
         #    render :json => {:errCode => 1, :count => @result}
             @name = User.find_by_user(params[:user])
             render :login
+        #if not, go back to main page with error
         else
         #    render :json => {:errCode => @result}
             render :index
@@ -31,6 +35,7 @@ class UsersController < ApplicationController
     def reset
         User.TESTAPI_resetFixture
         #render :json => {:errCode => 1}
+        #to display on the main page
         @result = -5
         render :index
     end

@@ -9,6 +9,7 @@ class User < ActiveRecord::Base
     MAX_PASSWORD_LENGTH = 128
     
     def self.add(u, p)
+        # test if valid then add
         if !User.find_by_user(u).nil?
             return ERR_USER_EXISTS
         end
@@ -25,6 +26,7 @@ class User < ActiveRecord::Base
     end
 
     def self.login(u,p)
+        #test if valid then increase count
         @user = User.find_by_user(u)
         if @user.nil? or p!=@user.password
             return ERR_BAD_CREDENTIALS
